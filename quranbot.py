@@ -14,7 +14,7 @@ async def on_message(message):
 	# we do not want the bot to reply to itself
 	if message.author == client.user:
 		return
-	searchObj = re.search( r'quran \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b', message.content.lower(), re.I)
+	searchObj = re.search( r'qur\'?an \b([1][0,1][0,1,2,3,4]|[1-9][0-9]?)\b:([0-9]{1,3})\b', message.content.lower(), re.I)
 	if (searchObj):
 		print (searchObj.group(0))
 		print (searchObj.group(1))
@@ -22,7 +22,7 @@ async def on_message(message):
 
 		msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{searchObj.group(2)}/en.asad')
 		response_text = json.loads(msg.text)
-		ayah_ar = response_text['data']['text']
+		ayah_ar = "Qur'an " + searchObj.group(1) + ":" + searchObj.group(2) + "\n" + response_text['data']['text']
 		print(ayah_ar)
 
 		await client.send_message(message.channel, ayah_ar)
