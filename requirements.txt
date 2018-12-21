@@ -1,0 +1,4 @@
+discord
+re
+requests
+json
