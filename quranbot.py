@@ -21,8 +21,6 @@ async def on_message(message):
 		print (searchObj.group(2))
 
 		msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{searchObj.group(2)}/en.asad')
-		# print(type(msg))
-		# print(dir(msg))
 		response_text = json.loads(msg.text)
 		ayah_ar = response_text['data']['text']
 		print(ayah_ar)
