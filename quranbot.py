@@ -28,7 +28,7 @@ async def on_message(message):
 
 			for x in range (start,end+1):
 
-				msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{str(x)}/en.yusufali')
+				msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{str(x)}/en.sahih')
 				msg_ar = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{str(x)}')
 				response_text = json.loads(msg.text)
 				response_text_ar = json.loads(msg_ar.text)
@@ -40,7 +40,7 @@ async def on_message(message):
 			print (searchObj.group(0))
 			print (searchObj.group(1))
 			print (searchObj.group(2))
-			msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{searchObj.group(2)}/en.yusufali')
+			msg = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{searchObj.group(2)}/en.sahih')
 			msg_ar = requests.get(url = f'http://api.alquran.cloud/ayah/{searchObj.group(1)}:{searchObj.group(2)}')
 			response_text = json.loads(msg.text)
 			response_text_ar = json.loads(msg_ar.text)
